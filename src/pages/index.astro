@@ -1,8 +1,8 @@
 ---
-import '../styles/globals.scss';
-import '../styles/index.scss';
-import github from '/github.png';
-import linkedin from '/linkedin.png';
+import "../styles/globals.scss";
+import "../styles/index.scss";
+import github from "/github.png";
+import linkedin from "/linkedin.png";
 ---
 
 <html lang="en">
@@ -14,7 +14,7 @@ import linkedin from '/linkedin.png';
     <title>Astro</title>
   </head>
   <body>
-    <nav>
+    <header>
       <div class="logo">
         <div class="nombre">
           <span>N</span><span>ICO</span>
@@ -25,7 +25,7 @@ import linkedin from '/linkedin.png';
       </div>
       <div class="title"></div>
       <div class="menu-btn">&lt;-</div>
-    </nav>
+    </header>
     <!-- <div class="icons">
       <a href="https://github.com/nicomoyano" target="_blank">
         <img src={github} />
@@ -37,39 +37,47 @@ import linkedin from '/linkedin.png';
         <img src={linkedin} />
       </a>
     </div> -->
-    <div class="menu">
+    <nav>
       <ul>
         <li>INFORMACION</li>
         <li>PROYECTOS</li>
         <li>CONTACTO</li>
       </ul>
-    </div>
-    <!-- <div class="sidebar"></div> -->
+    </nav>
+    <main>
+      <section class="informacion active">
+        <h2>Informacion</h2>
+      </section>
+      <section class="proyectos">
+        <h2>Proyectos</h2>
+      </section>
+      <section class="contacto">
+        <h2>Contacto</h2>
+      </section>
+    </main>
   </body>
 </html>
 
 <script>
-  const menuBtn = document.querySelector('.menu-btn');
-  const links = document.querySelectorAll('li');
-  const logo = document.querySelector('.logo');
-  const menu = document.querySelector('.menu');
-  const title = document.querySelector('.title');
+  const menuBtn = document.querySelector(".menu-btn");
+  const infoBtn = document.querySelector("li:nth-child(1)");
+  const proyectosBtn = document.querySelector("li:nth-child(2)");
+  const contactoBtn = document.querySelector("li:nth-child(3)");
+  const logo = document.querySelector(".logo");
+  const menu = document.querySelector("nav");
+  const title = document.querySelector(".title");
 
   let menuIsOpen = false;
   let opening = false;
-
-  setTimeout(() => {
-    handleMenu();
-  }, 1000);
 
   const handleMenu = () => {
     if (!opening) {
       opening = true;
       menuIsOpen = !menuIsOpen;
-      menu?.classList.toggle('opened');
-      menuBtn?.classList.toggle('opened');
+      menu?.classList.toggle("opened");
+      menuBtn?.classList.toggle("opened");
       if (menuIsOpen) {
-        logo?.classList.add('opened');
+        logo?.classList.add("opened");
       }
       setTimeout(() => {
         opening = false;
@@ -77,11 +85,20 @@ import linkedin from '/linkedin.png';
     }
   };
 
-  menuBtn?.addEventListener('click', handleMenu);
-  links.forEach((link) => {
-    link.addEventListener('click', () => {
-      handleMenu();
-      title!.innerHTML = link.innerHTML;
-    });
+  menuBtn?.addEventListener("click", handleMenu);
+
+  infoBtn?.addEventListener("click", () => {
+    handleMenu();
+    title!.innerHTML = infoBtn.innerHTML;
+  });
+
+  proyectosBtn?.addEventListener("click", () => {
+    handleMenu();
+    title!.innerHTML = proyectosBtn.innerHTML;
+  });
+
+  contactoBtn?.addEventListener("click", () => {
+    handleMenu();
+    title!.innerHTML = contactoBtn.innerHTML;
   });
 </script>

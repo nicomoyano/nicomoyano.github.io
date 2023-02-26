@@ -1,23 +1,11 @@
 body {
   background-color: var(--color-bg);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
 }
 
-.sidebar {
-  position: absolute;
-  left: 0;
-  width: 145px;
-  height: 100vh;
-  background-color: var(--color-fg);
-  z-index: 10;
-}
-
-nav {
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,7 +81,7 @@ nav {
     &.opened {
       color: var(--color-bg);
       transform: scaleX(-1);
-      transition: color 0.01s, transform 0.2s;
+      transition: color 0s, transform 0.2s;
     }
   }
 }
@@ -131,7 +119,7 @@ nav {
   }
 }
 
-.menu {
+nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -155,7 +143,7 @@ nav {
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 10vw;
     gap: 0.5em;
     text-align: right;
     list-style: none;
@@ -172,5 +160,21 @@ nav {
           -1px 1px 0 var(--color-bg), 1px 1px 0 var(--color-bg);
       }
     }
+  }
+}
+
+section {
+  width: calc(100vw - 290px);
+  min-height: 100vh;
+  background-color: red;
+  color: white;
+  margin: 0 auto;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
   }
 }
